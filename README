@@ -1,0 +1,14 @@
+This is a (for now, just slightly) refactored version of `pyflix`, a
+semi-official Python library for the Netflix API. The un-Pythonic syntax
+and method names of pyflix were, tbh, driving me nuts,
+so I changed those here; consequently this breaks compatability with the
+old existing library.
+
+There are a few other minor changes.
+
+This library here is under the GPL, because that's what the original
+pyflix library is under.
+
+I'll probably end up writing an entirely new client at some point.
+
+original author: Kristen Jones
