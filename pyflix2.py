@@ -2,7 +2,7 @@
 ## This is a (for now, just slightly) refactored version of `pyflix`, a
 ## semi-official Python library for the Netflix API. The un-Pythonic syntax
 ## and method names of pyflix were, tbh, driving me nuts,
-## so I changed those here; consequently this breaks compatability with the
+## so I changed those here; consequently this breaks compatibility with the
 ## old existing library.
 
 ## There are a few other minor changes.
