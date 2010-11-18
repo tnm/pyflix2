@@ -503,7 +503,7 @@ class NetflixDisc(object):
             return info
 
 
-class NetflixClient:
+class NetflixClient(object):
 
     def __init__(self, name, key, secret, callback='', verbose=False):
         self.connection = httplib.HTTPConnection("%s:%s" % (HOST, PORT))
