@@ -36,7 +36,7 @@ class NetflixError(Exception):
     pass
 
 
-class NetflixUser():
+class NetflixUser(object):
 
     def __init__(self, user, client):
         self.request_token_url = REQUEST_TOKEN_URL
@@ -209,7 +209,7 @@ class NetflixUser():
         return info
 
 
-class NetflixCatalog():
+class NetflixCatalog(object):
 
     def __init__(self,client):
         self.client = client
@@ -272,7 +272,7 @@ class NetflixCatalog():
         return info
 
 
-class NetflixUserQueue:
+class NetflixUserQueue(object):
 
     def __init__(self, user):
         self.user = user
@@ -478,7 +478,7 @@ class NetflixUserQueue:
         return response
 
 
-class NetflixDisc:
+class NetflixDisc(object);
 
     def __init__(self, disc_info, client):
         self.info = disc_info
