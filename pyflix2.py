@@ -19,7 +19,10 @@ import oauth.oauth as oauth
 import httplib
 import time
 from xml.dom.minidom import parseString
-import simplejson
+try:
+    import json as simplejson
+except:
+    import simplejson
 from urlparse import urlparse
 
 HOST              = 'api.netflix.com'
