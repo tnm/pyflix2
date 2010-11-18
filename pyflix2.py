@@ -296,7 +296,7 @@ class NetflixUserQueue(object):
             info = json.loads(self.client._get_resource(
                                     request_url,
                                     parameters=parameters,
-                                    token=self.user.access_token ))
+                                    token=self.user.access_token))
         except:
             return []
         else:
@@ -321,7 +321,7 @@ class NetflixUserQueue(object):
             info = json.loads(self.client._get_resource(
                                     request_url,
                                     parameters=parameters,
-                                    token=self.user.access_token ))
+                                    token=self.user.access_token))
         except:
             return []
         else:
@@ -347,7 +347,7 @@ class NetflixUserQueue(object):
             info = json.loads(self.client._get_resource(
                                     request_url,
                                     parameters=parameters,
-                                    token=self.user.access_token ))
+                                    token=self.user.access_token))
         except:
             return []
         else:
@@ -374,7 +374,7 @@ class NetflixUserQueue(object):
             info = json.loads(self.client._get_resource(
                                     request_url,
                                     parameters=parameters,
-                                    token=self.user.access_token ))
+                                    token=self.user.access_token))
         except:
             return []
         else:
@@ -389,7 +389,7 @@ class NetflixUserQueue(object):
         if not isinstance(access_token, oauth.OAuthToken):
             access_token = oauth.OAuthToken(
                                     access_token['key'],
-                                    access_token['secret'] )
+                                    access_token['secret'])
 
         request_url = '/users/%s/queues/disc' % (access_token.key)
         if not urls:
@@ -400,7 +400,7 @@ class NetflixUserQueue(object):
         if not self.tag:
             response = self.client._get_resource(
                                     request_url,
-                                    token=access_token )
+                                    token=access_token)
             response = json.loads(response)
             self.tag = response["queue"]["etag"]
         parameters['etag'] = self.tag
@@ -408,7 +408,7 @@ class NetflixUserQueue(object):
         response = self.client._post_resource(
                                     request_url,
                                     token=access_token,
-                                    parameters=parameters )
+                                    parameters=parameters)
 
 
     def add_title_instant(self, disc_info=[], urls=[], queue_type='instant', position=None):
@@ -431,14 +431,14 @@ class NetflixUserQueue(object):
         if not self.tag:
             response = self.client._get_resource(
                                     request_url,
-                                    token=access_token )
+                                    token=access_token)
             response = json.loads(response)
             self.tag = response["queue"]["etag"]
         parameters['etag'] = self.tag
         response = self.client._post_resource(
                                     request_url,
                                     token=access_token,
-                                    parameters=parameters )
+                                    parameters=parameters)
         return response
 
 
@@ -449,7 +449,7 @@ class NetflixUserQueue(object):
         if not isinstance(access_token, oauth.OAuthToken):
             access_token = oauth.OAuthToken(
                                     access_token['key'],
-                                    access_token['secret'] )
+                                    access_token['secret'])
 
         # First, we gotta find the entry to delete
         queueparams = {'max_results': 500}
@@ -457,7 +457,7 @@ class NetflixUserQueue(object):
         response = self.client._get_resource(
                                     request_url,
                                     token=access_token,
-                                    parameters=queueparams )
+                                    parameters=queueparams)
         print "Response is " + response
         response = json.loads(response)
         titles = response["queue"]["queue_item"]
@@ -496,7 +496,7 @@ class NetflixDisc(object):
             print error_string
             sys.exit(1)
         try:
-            info = json.loads(self.client._get_resource( url ))
+            info = json.loads(self.client._get_resource(url))
         except:
             return []
         else:
