@@ -20,9 +20,9 @@ import httplib
 import time
 from xml.dom.minidom import parseString
 try:
-    import json as simplejson
+    import json
 except:
-    import simplejson
+    import simplejson as json
 from urlparse import urlparse
 
 HOST              = 'api.netflix.com'
@@ -106,7 +106,7 @@ class NetflixUser(object):
 
         request_url = '/users/%s' % (access_token.key)
 
-        info = simplejson.loads( self.client._get_resource(
+        info = json.loads( self.client._get_resource(
                                     request_url,
                                     token=access_token ) )
         self.data = info['user']
@@ -131,7 +131,7 @@ class NetflixUser(object):
             sys.exit(1)
 
         try:
-            info = simplejson.loads(self.client._get_resource(
+            info = json.loads(self.client._get_resource(
                                     url, token=access_token))
         except:
             return []
@@ -155,7 +155,7 @@ class NetflixUser(object):
                 urls.append(disc_info['id'])
         parameters = { 'title_refs': ','.join(urls) }
 
-        info = simplejson.loads(self.client._get_resource(
+        info = json.loads(self.client._get_resource(
                                     request_url,
                                     parameters=parameters,
                                     token=access_token))
@@ -199,7 +199,7 @@ class NetflixUser(object):
             request_url = '/users/%s/rental_history/%s' % (access_token.key, history_type)
 
         try:
-            info = simplejson.loads(self.client._get_resource(
+            info = json.loads(self.client._get_resource(
                                     request_url,
                                     parameters=parameters,
                                     token=access_token))
@@ -221,7 +221,7 @@ class NetflixCatalog(object):
             parameters['start_index'] = start_index
         if max_results:
             parameters['max_results'] = max_results
-        info = simplejson.loads( self.client._get_resource(
+        info = json.loads( self.client._get_resource(
                                     request_url,
                                     parameters=parameters))
 
@@ -235,15 +235,15 @@ class NetflixCatalog(object):
         if max_results:
             parameters['max_results'] = max_results
 
-        info = simplejson.loads( self.client._get_resource(
+        info = json.loads( self.client._get_resource(
                                     request_url,
                                     parameters=parameters))
-        print simplejson.dumps(info)
+        print json.dumps(info)
         return info['autocomplete']['autocomplete_item']
 
     def get_title(self, url):
         request_url = url
-        info = simplejson.loads(self.client._get_resource(request_url))
+        info = json.loads(self.client._get_resource(request_url))
         return info
 
     def search_people(self, term, start_index=None, max_results=None):
@@ -255,7 +255,7 @@ class NetflixCatalog(object):
             parameters['max_results'] = max_results
 
         try:
-            info = simplejson.loads(self.client._get_resource(
+            info = json.loads(self.client._get_resource(
                                     request_url,
                                     parameters=parameters))
         except:
@@ -266,7 +266,7 @@ class NetflixCatalog(object):
     def get_person(self, url):
         request_url = url
         try:
-            info = simplejson.loads(self.client._get_resource(request_url))
+            info = json.loads(self.client._get_resource(request_url))
         except:
             return {}
         return info
@@ -293,7 +293,7 @@ class NetflixUserQueue(object):
 
         request_url = '/users/%s/queues' % (self.user.access_token.key)
         try:
-            info = simplejson.loads(self.client._get_resource(
+            info = json.loads(self.client._get_resource(
                                     request_url,
                                     parameters=parameters,
                                     token=self.user.access_token ))
@@ -318,7 +318,7 @@ class NetflixUserQueue(object):
                                     self.user.access_token.key,
                                     queue_type)
         try:
-            info = simplejson.loads(self.client._get_resource(
+            info = json.loads(self.client._get_resource(
                                     request_url,
                                     parameters=parameters,
                                     token=self.user.access_token ))
@@ -344,7 +344,7 @@ class NetflixUserQueue(object):
                                     self.user.access_token.key,
                                     queue_type)
         try:
-            info = simplejson.loads(self.client._get_resource(
+            info = json.loads(self.client._get_resource(
                                     request_url,
                                     parameters=parameters,
                                     token=self.user.access_token ))
@@ -371,7 +371,7 @@ class NetflixUserQueue(object):
                                     self.user.access_token.key,
                                     queue_type)
         try:
-            info = simplejson.loads(self.client._get_resource(
+            info = json.loads(self.client._get_resource(
                                     request_url,
                                     parameters=parameters,
                                     token=self.user.access_token ))
@@ -401,7 +401,7 @@ class NetflixUserQueue(object):
             response = self.client._get_resource(
                                     request_url,
                                     token=access_token )
-            response = simplejson.loads(response)
+            response = json.loads(response)
             self.tag = response["queue"]["etag"]
         parameters['etag'] = self.tag
 
@@ -432,7 +432,7 @@ class NetflixUserQueue(object):
             response = self.client._get_resource(
                                     request_url,
                                     token=access_token )
-            response = simplejson.loads(response)
+            response = json.loads(response)
             self.tag = response["queue"]["etag"]
         parameters['etag'] = self.tag
         response = self.client._post_resource(
@@ -459,7 +459,7 @@ class NetflixUserQueue(object):
                                     token=access_token,
                                     parameters=queueparams )
         print "Response is " + response
-        response = simplejson.loads(response)
+        response = json.loads(response)
         titles = response["queue"]["queue_item"]
 
         for disc in titles:
@@ -496,7 +496,7 @@ class NetflixDisc(object):
             print error_string
             sys.exit(1)
         try:
-            info = simplejson.loads(self.client._get_resource( url ))
+            info = json.loads(self.client._get_resource( url ))
         except:
             return []
         else:
