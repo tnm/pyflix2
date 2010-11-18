@@ -478,7 +478,7 @@ class NetflixUserQueue(object):
         return response
 
 
-class NetflixDisc(object);
+class NetflixDisc(object):
 
     def __init__(self, disc_info, client):
         self.info = disc_info
