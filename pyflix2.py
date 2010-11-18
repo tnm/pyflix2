@@ -288,7 +288,7 @@ class NetflixUserQueue(object):
             parameters['max_results'] = max_results
         if updated_min:
             parameters['updated_min'] = updated_min
-        if sort and sort in ('queue_sequence','date_added','alphabetical'):
+        if sort and sort in ('queue_sequence', 'date_added', 'alphabetical'):
             parameters['sort'] = sort
 
         request_url = '/users/%s/queues' % (self.user.access_token.key)
@@ -311,7 +311,7 @@ class NetflixUserQueue(object):
             parameters['max_results'] = max_results
         if updated_min:
             parameters['updated_min'] = updated_min
-        if sort and sort in ('queue_sequence','date_added','alphabetical'):
+        if sort and sort in ('queue_sequence', 'date_added', 'alphabetical'):
             parameters['sort'] = sort
 
         request_url = '/users/%s/queues/%s/available' % (
@@ -337,7 +337,7 @@ class NetflixUserQueue(object):
             parameters['max_results'] = max_results
         if updated_min:
             parameters['updated_min'] = updated_min
-        if sort and sort in ('queue_sequence','date_added','alphabetical'):
+        if sort and sort in ('queue_sequence', 'date_added', 'alphabetical'):
             parameters['sort'] = sort
 
         request_url = '/users/%s/queues/%s/available' % (
