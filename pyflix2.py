@@ -127,7 +127,7 @@ class NetflixUser(object):
 
         if not url:
             error_string = "Invalid or missing field. Acceptable fields for this object are: \n\n".join(fields)
-            print error_string
+            # print error_string
             sys.exit(1)
 
         try:
@@ -238,7 +238,7 @@ class NetflixCatalog(object):
         info = json.loads( self.client._get_resource(
                                     request_url,
                                     parameters=parameters))
-        print json.dumps(info)
+        #print json.dumps(info)
         return info['autocomplete']['autocomplete_item']
 
     def get_title(self, url):
@@ -458,7 +458,7 @@ class NetflixUserQueue(object):
                                     request_url,
                                     token=access_token,
                                     parameters=queueparams)
-        print "Response is " + response
+        #print "Response is " + response
         response = json.loads(response)
         titles = response["queue"]["queue_item"]
 
@@ -493,7 +493,7 @@ class NetflixDisc(object):
                 url = link['href']
         if not url:
             error_string = "Invalid or missing field. Acceptable fields for this object are: \n\n".join(fields)
-            print error_string
+            #print error_string
             sys.exit(1)
         try:
             info = json.loads(self.client._get_resource(url))
@@ -539,7 +539,8 @@ class NetflixClient(object):
                                     token)
 
         if self.verbose:
-            print oauth_request.to_url()
+            #print oauth_request.to_url()
+            pass
 
         self.connection.request('GET', oauth_request.to_url())
         response = self.connection.getresponse()
@@ -561,7 +562,8 @@ class NetflixClient(object):
                                     token)
 
         if self.verbose:
-            print "POSTING TO" + oauth_request.to_url()
+            #print "POSTING TO" + oauth_request.to_url()
+            pass
 
         headers = {'Content-Type':'application/x-www-form-urlencoded'}
         self.connection.request('POST', url,
@@ -587,7 +589,8 @@ class NetflixClient(object):
                                     token)
 
         if self.verbose:
-            print "DELETING FROM" + oauth_request.to_url()
+            # print "DELETING FROM" + oauth_request.to_url()
+            pass
 
         self.connection.request('DELETE', oauth_request.to_url())
         response = self.connection.getresponse()
