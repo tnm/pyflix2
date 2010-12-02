@@ -160,21 +160,7 @@ class NetflixUser(object):
                                     parameters=parameters,
                                     token=access_token))
 
-        ret = {}
-        for title in info['ratings']['ratings_item']:
-                ratings = {
-                        'average': title['average_rating'],
-                        'predicted': title['predicted_rating'],
-                }
-
-                try:
-                    ratings['user'] = title['user_rating']
-                except:
-                    pass
-
-                ret[title['title']['regular']] = ratings
-
-        return ret
+        return info
 
     def get_rental_history(self, history_type=None, start_index=None,
                                     max_results=None, updated_min=None):
